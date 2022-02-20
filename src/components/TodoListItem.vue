@@ -5,7 +5,7 @@
 <script>
 
 export default {
-  name: "TotoListItem"
+  name: "TodoListItem"
 };
 </script>
 
