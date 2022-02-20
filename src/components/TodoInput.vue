@@ -22,6 +22,7 @@ export default Vue.extend({
       //   return;
       // }
       // 이벤트의 타입을 정의
+
       const eventTarget = event.target as HTMLInputElement;
       this.$emit('input', eventTarget.value);
     },
