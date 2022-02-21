@@ -1,17 +1,34 @@
 <template>
-  <li>{{ todoItem }}</li>
+  <li>
+    <span class="item complete">{{ todoItem }}</span>
+    <button @click="removeTodo">삭제</button>
+  </li>
 </template>
 
-<script>
+<script lang="ts">
 
-export default {
+import {Todo} from '../App.vue';
+import Vue, { PropType } from 'vue';
+
+export default  Vue.extend({
   name: "TodoListItem",
-  props:{
-    todoItem:String
+  props: {
+    todoItem: Object as PropType<Todo>,
+    index: Number
+  },
+  methods: {
+    removeTodo() {
+      this.$emit('deleteTodo', this.index);
+    }
   }
-};
+});
 </script>
 
 <style scoped>
-
+.item{
+  cursor: pointer;
+}
+.complete{
+  text-decoration: line-through;
+}
 </style>
