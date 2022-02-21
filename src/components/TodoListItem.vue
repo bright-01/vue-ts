@@ -1,11 +1,14 @@
 <template>
-  <li>item1</li>
+  <li>{{ todoItem }}</li>
 </template>
 
 <script>
 
 export default {
-  name: "TodoListItem"
+  name: "TodoListItem",
+  props:{
+    todoItem:String
+  }
 };
 </script>
 
