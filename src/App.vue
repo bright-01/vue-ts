@@ -8,7 +8,7 @@
     </main>
     <div>
       <ul>
-        <TodoListItem v-for="(todoItem, index) in todoItems" :key="index" :index="index" :todoItem="todoItem" @deleteTodo="removeTodoItem"></TodoListItem>
+        <TodoListItem v-for="(todoItem, index) in todoItems" :key="index" :index="index" :todoItem="todoItem" @deleteTodo="removeTodoItem" @toggle="toggleTodoItemComplete"></TodoListItem>
       </ul>
     </div>
 
@@ -79,6 +79,14 @@ export default Vue.extend({
     removeTodoItem(index: number){
       console.log("delete!"+ index);
       this.todoItems.splice(index, 1);
+      storage.save(this.todoItems);
+    },
+    toggleTodoItemComplete(todoItem:Todo, index:number){
+      console.log(todoItem)
+      this.todoItems.splice(index, 1, {
+        ...todoItem,
+        done: !todoItem.done
+      });
       storage.save(this.todoItems);
     }
   }
