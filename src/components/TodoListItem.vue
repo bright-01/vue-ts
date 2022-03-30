@@ -2,7 +2,7 @@
   <li>
     <span
       class="item"
-      :class="todoItem.done ? 'complete' : null"
+      :class="todoItemClass"
       @click="toggleItem"
       >{{ todoItem.title }}</span
     >
@@ -19,6 +19,11 @@ export default Vue.extend({
   props: {
     todoItem: Object as PropType<Todo>,
     index: Number,
+  },
+  computed:{
+    todoItemClass(): string | null {
+      return this.todoItem.done ? 'complete' : null;
+    }
   },
   methods: {
     removeTodo() {
