@@ -8,6 +8,8 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { VueEvent } from '@/types/index';
+
 export default Vue.extend({
   name: "TodoInput",
   props:{
@@ -17,14 +19,19 @@ export default Vue.extend({
     }
   },
   methods: {
-    handleInput(event: InputEvent){
+    handleInput(event: VueEvent.Input<HTMLInputElement>){
+      event.target.value;
+      // const a : VueEvent.Input = {
+      //   target
+      // }
       // if(!event.target){
       //   return;
       // }
       // 이벤트의 타입을 정의
 
-      const eventTarget = event.target as HTMLInputElement;
-      this.$emit('input', eventTarget.value);
+      // const eventTarget = event.target as HTMLInputElement;
+      // this.$emit('input', eventTarget.value);
+      this.$emit('input', event.target.value);
     },
     addTodo(){
       this.$emit("add")
